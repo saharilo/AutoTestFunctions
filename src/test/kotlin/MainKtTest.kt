@@ -23,4 +23,22 @@ class MainKtTest {
         // assert
         assertEquals(75, result)
     }
+    @Test
+    fun masterCardTest() {
+        //arrange
+        val typeCard = "Mastercard"
+        val sumMonthTransfer = 0
+        val transfer = 100_000
+        val dailyLimit = 150_000
+        val monthLimit = 600_000
+
+        // act
+        val result = commissionCard(
+            typeCard = typeCard, sumMonthTransfer = sumMonthTransfer, transfer = transfer,
+            dailyLimit = dailyLimit, monthLimit = monthLimit
+        )
+
+        // assert
+        assertEquals(170, result)
+    }
 }
