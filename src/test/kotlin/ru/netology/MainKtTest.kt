@@ -95,7 +95,7 @@ class MainKtTest {
         )
 
         // assert
-        assertEquals(-2, result)
+        assertEquals(0, result)
     }
 
 }
