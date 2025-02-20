@@ -6,6 +6,7 @@ fun main () {
     when (result){
         -1 -> println("Операция заблокирована. Превышен дневной лимит!")
         -2 -> println("Операция заблокирована. Превышен месячный лимит!")
+        -3 -> println("Неизвестная операция!")
         else -> println("Комиссия за перевод составит $result рублей.")
     }
 
@@ -29,6 +30,6 @@ fun commissionCard(typeCard: String = "Мир", sumMonthTransfer: Int = 0, trans
             val upLimit = if (sumMonthTransfer > 75000 || transfer < 300) transfer else sumMonthTransfer + transfer - 75000
             if (upLimit <= 0 && transfer > 300) 0 else (upLimit * 0.006 + 20).toInt()
         }
-        else -> -1
+        else -> -3
     }
 }

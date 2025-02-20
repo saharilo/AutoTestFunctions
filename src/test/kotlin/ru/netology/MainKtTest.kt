@@ -98,4 +98,54 @@ class MainKtTest {
         assertEquals(0, result)
     }
 
+    @Test
+    fun VKPayDailyLimitTest() {
+        val result = commissionCard(
+            typeCard = "VK Pay", sumMonthTransfer = 0, transfer = 20_000,
+            dailyLimit = 15_000, monthLimit = 40_000
+        )
+        // assert
+        assertEquals(-1, result)
+    }
+
+    @Test
+    fun VKPayMonthLimitTest() {
+        val result = commissionCard(
+            typeCard = "VK Pay", sumMonthTransfer = 30_000, transfer = 11_000,
+            dailyLimit = 15_000, monthLimit = 40_000
+        )
+        // assert
+        assertEquals(-2, result)
+    }
+
+    @Test
+    fun ErrorTest() {
+        val result = commissionCard(
+            typeCard = "VK", sumMonthTransfer = 0, transfer = 11_000,
+            dailyLimit = 15_000, monthLimit = 40_000
+        )
+        // assert
+        assertEquals(-3, result)
+    }
+
+    @Test
+    fun MaestroTest() {
+        val result = commissionCard(
+            typeCard = "Maestro", sumMonthTransfer = 0, transfer = 200,
+            dailyLimit = 150_000, monthLimit = 600_000
+        )
+        // assert
+        assertEquals(21, result)
+    }
+
+    @Test
+    fun VisaTest() {
+        val result = commissionCard(
+            typeCard = "Visa", sumMonthTransfer = 0, transfer = 2000,
+            dailyLimit = 150_000, monthLimit = 600_000
+        )
+        // assert
+        assertEquals(35, result)
+    }
+
 }
